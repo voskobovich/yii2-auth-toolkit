@@ -3,10 +3,10 @@
 namespace voskobovich\auth\interfaces;
 
 /**
- * Interface UserAuthInterface
+ * Interface AuthUserInterface
  * @package voskobovich\auth\interfaces
  */
-interface UserAuthInterface
+interface AuthUserInterface
 {
     /**
      * @param $password

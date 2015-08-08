@@ -3,7 +3,7 @@
 namespace voskobovich\auth\forms;
 
 use voskobovich\auth\interfaces\AuthLoginFormInterface;
-use voskobovich\auth\interfaces\UserAuthInterface;
+use voskobovich\auth\interfaces\AuthUserInterface;
 use Yii;
 use yii\base\Model;
 use yii\web\IdentityInterface;
@@ -68,7 +68,7 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     /**
      * Finds user by [[email]]
      *
-     * @return UserAuthInterface|IdentityInterface|null
+     * @return AuthUserInterface|IdentityInterface|null
      */
     abstract public function getUser();
 
