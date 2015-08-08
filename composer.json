@@ -1,0 +1,38 @@
+{
+  "name": "voskobovich/yii2-auth-toolkit",
+  "description": "Tools to create site authorization for Yii2.",
+  "keywords": [
+    "auth",
+    "toolkit",
+    "yii2",
+    "actions",
+    "forms"
+  ],
+  "homepage": "https://github.com/voskobovich/yii2-auth-toolkit",
+  "type": "yii2-toolkit",
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/voskobovich/yii2-auth-toolkit/issues",
+    "source": "https://github.com/voskobovich/yii2-auth-toolkit"
+  },
+  "authors": [
+    {
+      "name": "Vitaly Voskobovich",
+      "email": "vitaly@voskobovich.com",
+      "homepage": "http://voskobovich.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "yiisoft/yii2": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "voskobovich\\auth\\controllers\\": "controllers",
+      "voskobovich\\auth\\actions\\": "actions",
+      "voskobovich\\auth\\forms\\": "forms",
+      "voskobovich\\auth\\interfaces\\": "interfaces"
+    }
+  }
+}
