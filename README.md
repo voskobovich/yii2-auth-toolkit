@@ -9,13 +9,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-composer require --prefer-dist voskobovich/yii2-profile-toolkit "*"
+composer require --prefer-dist voskobovich/yii2-auth-toolkit "*"
 ```
 
 or add
 
 ```
-"voskobovich/yii2-profile-toolkit": "*"
+"voskobovich/yii2-auth-toolkit": "*"
 ```
 
 to the require section of your `composer.json` file.
