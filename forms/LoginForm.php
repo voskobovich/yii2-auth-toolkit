@@ -2,6 +2,7 @@
 
 namespace voskobovich\auth\forms;
 
+use voskobovich\auth\interfaces\AuthLoginFormInterface;
 use voskobovich\auth\interfaces\UserAuthInterface;
 use Yii;
 use yii\base\Model;
@@ -11,7 +12,7 @@ use yii\web\IdentityInterface;
 /**
  * LoginForm is the model behind the login form.
  */
-abstract class LoginForm extends Model
+abstract class LoginForm extends Model implements AuthLoginFormInterface
 {
     /**
      * Email

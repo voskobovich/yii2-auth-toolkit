@@ -3,10 +3,10 @@
 namespace voskobovich\auth\interfaces;
 
 /**
- * Interface AuthLoginInterface
+ * Interface AuthLoginFormInterface
  * @package voskobovich\auth\interfaces
  */
-interface AuthLoginInterface
+interface AuthLoginFormInterface
 {
     /**
      * Auth user logic
