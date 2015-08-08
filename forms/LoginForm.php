@@ -48,7 +48,7 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword()) {
+            if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, Yii::t('loginForm', 'Incorrect email or password'));
             }
         }

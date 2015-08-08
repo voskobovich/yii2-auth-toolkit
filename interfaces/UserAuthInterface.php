@@ -9,7 +9,8 @@ namespace voskobovich\auth\interfaces;
 interface UserAuthInterface
 {
     /**
+     * @param $password
      * @return bool
      */
-    public function validatePassword();
+    public function validatePassword($password);
 }
