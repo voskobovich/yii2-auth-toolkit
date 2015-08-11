@@ -4,7 +4,6 @@ namespace voskobovich\auth\controllers;
 
 use voskobovich\auth\actions\LoginAction;
 use voskobovich\auth\actions\LogoutAction;
-use voskobovich\auth\forms\LoginForm;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -15,6 +14,11 @@ use yii\web\Controller;
  */
 class AuthController extends Controller
 {
+    /**
+     * @var string
+     */
+    public $modelClass;
+
     /**
      * @return array
      */
@@ -54,7 +58,7 @@ class AuthController extends Controller
 
         $actions['login'] = [
             'class' => LoginAction::className(),
-            'modelClass' => LoginForm::className()
+            'modelClass' => $this->modelClass
         ];
         $actions['logout'] = [
             'class' => LogoutAction::className(),
