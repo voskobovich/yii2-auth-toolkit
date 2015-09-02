@@ -2,7 +2,7 @@
 
 namespace voskobovich\auth\actions;
 
-use voskobovich\auth\interfaces\AuthLoginInterface;
+use voskobovich\auth\interfaces\AuthLoginFormInterface;
 use Yii;
 use yii\base\Action;
 use yii\base\InvalidConfigException;
@@ -47,7 +47,7 @@ class LoginAction extends Action
             return $this->controller->goHome();
         }
 
-        /** @var AuthLoginInterface|Model $model */
+        /** @var AuthLoginFormInterface|Model $model */
         $model = new $this->modelClass;
         $postData = Yii::$app->request->post();
 
