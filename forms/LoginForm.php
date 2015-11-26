@@ -7,6 +7,7 @@ use voskobovich\auth\interfaces\AuthUserInterface;
 use Yii;
 use yii\base\Model;
 use yii\web\IdentityInterface;
+use yii\web\User;
 
 
 /**
@@ -71,11 +72,10 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     public function login()
     {
         if ($this->validate()) {
-            $result = Yii::$app->user->login($this->getUser());
-            if ($result) {
-                $this->afterLogin();
-            }
-            return $result;
+            $user = Yii::$app->user;
+            $user->on(User::EVENT_BEFORE_LOGIN, [$this, 'beforeLogin']);
+            $user->on(User::EVENT_AFTER_LOGIN, [$this, 'afterLogin']);
+            return $user->login($this->getUser());
         }
 
         return false;
@@ -89,9 +89,25 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     abstract public function getUser();
 
     /**
-     * This method is called after logging in a user.
+     * This method is called before logging in a user.
+     * @param IdentityInterface $identity the user identity information
+     * @return bool
      */
-    public function afterLogin()
+    public function beforeLogin($identity)
     {
+        return true;
+    }
+
+    /**
+     * This method is called after logging in a user.
+     * @param IdentityInterface $identity the user identity information
+     * @param boolean $cookieBased whether the login is cookie-based
+     * @param integer $duration number of seconds that the user can remain in logged-in status.
+     * If 0, it means login till the user closes the browser or the session is manually destroyed.
+     * @return null
+     */
+    public function afterLogin($identity, $cookieBased, $duration)
+    {
+        return null;
     }
 }
