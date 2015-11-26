@@ -66,6 +66,22 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     }
 
     /**
+     * @return boolean whether the user is logged in successfully
+     */
+    public function login()
+    {
+        if ($this->validate()) {
+            $result = Yii::$app->user->login($this->getUser());
+            if ($result) {
+                $this->afterLogin();
+            }
+            return $result;
+        }
+
+        return false;
+    }
+
+    /**
      * Finds user by [[email]]
      *
      * @return AuthUserInterface|IdentityInterface|null
@@ -73,9 +89,9 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     abstract public function getUser();
 
     /**
-     * Logs in a user using the provided email and password.
      *
-     * @return boolean whether the user is logged in successfully
      */
-    abstract public function login();
+    public function afterLogin()
+    {
+    }
 }
