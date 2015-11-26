@@ -51,14 +51,17 @@ class LoginAction extends Action
         $model = new $this->modelClass;
         $postData = Yii::$app->request->post();
 
-        if (Yii::$app->request->isAjax) {
-            $model->load($postData);
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
-        }
+        if ($model->load($postData)) {
 
-        if ($model->load($postData) && $model->login()) {
-            return $this->controller->goBack();
+            $request = Yii::$app->request;
+            if ($request->isAjax && !$request->isPjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+
+            if ($model->login()) {
+                return $this->controller->goBack();
+            }
         }
 
         return $this->controller->render($this->viewName, [
