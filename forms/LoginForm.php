@@ -108,6 +108,5 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
      */
     public function afterLogin($identity, $cookieBased, $duration)
     {
-        return null;
     }
 }
