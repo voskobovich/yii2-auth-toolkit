@@ -89,7 +89,7 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     abstract public function getUser();
 
     /**
-     *
+     * This method is called after logging in a user.
      */
     public function afterLogin()
     {
