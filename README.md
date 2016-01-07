@@ -1,4 +1,4 @@
-Yii2 Profile Toolkit
+Yii2 Auth Toolkit
 ================================
 
 Installation
