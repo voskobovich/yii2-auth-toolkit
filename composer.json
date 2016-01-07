@@ -29,10 +29,10 @@
   },
   "autoload": {
     "psr-4": {
-      "voskobovich\\auth\\controllers\\": "controllers",
-      "voskobovich\\auth\\actions\\": "actions",
-      "voskobovich\\auth\\forms\\": "forms",
-      "voskobovich\\auth\\interfaces\\": "interfaces"
+      "voskobovich\\auth\\controllers\\": "src/controllers",
+      "voskobovich\\auth\\actions\\": "src/actions",
+      "voskobovich\\auth\\forms\\": "src/forms",
+      "voskobovich\\auth\\interfaces\\": "src/interfaces"
     }
   }
 }
