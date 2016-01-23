@@ -42,7 +42,7 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
 
     /**
      * Validates the email.
-     * This method serves as the inline validation for password.
+     * This method serves as the inline validation for email.
      *
      * @param string $attribute the attribute currently being validated
      */
