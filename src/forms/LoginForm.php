@@ -35,8 +35,28 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
         return [
             [['email', 'password'], 'required'],
             [['email'], 'email'],
+            ['email', 'validateEmail'],
             ['password', 'validatePassword'],
         ];
+    }
+
+    /**
+     * Validates the email.
+     * This method serves as the inline validation for password.
+     *
+     * @param string $attribute the attribute currently being validated
+     */
+    public function validateEmail($attribute)
+    {
+        if (!$this->hasErrors()) {
+            $user = $this->getUser();
+            if (!$user) {
+                $this->addError($attribute, Yii::t(
+                    'vendor/voskobovich/yii2-auth-toolkit/forms/loginForm',
+                    'E-mail is incorrect'
+                ));
+            }
+        }
     }
 
     /**
@@ -49,10 +69,10 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
     {
         if (!$this->hasErrors()) {
             $user = $this->getUser();
-            if (!$user || !$user->validatePassword($this->password)) {
+            if (!$user->validatePassword($this->password)) {
                 $this->addError($attribute, Yii::t(
                     'vendor/voskobovich/yii2-auth-toolkit/forms/loginForm',
-                    'Incorrect email or password'
+                    'Password is incorrect'
                 ));
             }
         }
