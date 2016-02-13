@@ -53,7 +53,7 @@ abstract class LoginForm extends Model implements AuthLoginFormInterface
             if (!$user) {
                 $this->addError($attribute, Yii::t(
                     'vendor/voskobovich/yii2-auth-toolkit/forms/loginForm',
-                    'E-mail is incorrect'
+                    'Account not found'
                 ));
             }
         }
