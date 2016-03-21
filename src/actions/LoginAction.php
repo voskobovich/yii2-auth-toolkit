@@ -48,7 +48,7 @@ class LoginAction extends Action
         }
 
         /** @var AuthLoginFormInterface|Model $model */
-        $model = new $this->modelClass;
+        $model = Yii::createObject($this->modelClass);
         $postData = Yii::$app->request->post();
 
         if ($model->load($postData)) {
