@@ -39,11 +39,16 @@ class LoginAction extends Action
     }
 
     /**
+     * @param string $back
      * @return string
      */
-    public function run()
+    public function run($back = null)
     {
         if (!Yii::$app->user->isGuest) {
+            if ($back) {
+                return Yii::$app->response->redirect($back);
+            }
+
             return $this->controller->goHome();
         }
 
@@ -52,14 +57,18 @@ class LoginAction extends Action
         $postData = Yii::$app->request->post();
 
         if ($model->load($postData)) {
-
             $request = Yii::$app->request;
+
             if ($request->isAjax && !$request->isPjax) {
                 Yii::$app->response->format = Response::FORMAT_JSON;
                 return ActiveForm::validate($model);
             }
 
             if ($model->login()) {
+                if ($back) {
+                    return Yii::$app->response->redirect($back);
+                }
+
                 return $this->controller->goBack();
             }
         }

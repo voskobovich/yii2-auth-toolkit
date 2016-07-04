@@ -12,11 +12,16 @@ use yii\base\Action;
 class LogoutAction extends Action
 {
     /**
+     * @param string $back
      * @return string
      */
-    public function run()
+    public function run($back = null)
     {
         Yii::$app->user->logout();
+
+        if ($back) {
+            return Yii::$app->response->redirect($back);
+        }
 
         return $this->controller->goHome();
     }
